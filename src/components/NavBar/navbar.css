@@ -1,0 +1,27 @@
+.nav {
+  position: relative;
+}
+
+.nav__user-avatar {
+  margin: 0 5px;
+}
+.nav__menu {
+  text-align: right;
+}
+
+.nav__mobile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+}
+
+/* Using nested selectors is not recommended when using BEM but 
+I had to use them to override ant-design default styles*/
+.nav__menu,
+#nav .nav__menu-item {
+  border: none;
+}
+
+#nav i {
+  margin-right: 0;
+}

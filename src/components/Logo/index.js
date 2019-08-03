@@ -3,7 +3,7 @@ import React from "react";
 import "./logo.css";
 
 const Logo = ({ url }: { url: string }) => (
-  <div className="logo-container">
+  <div id="logo-container" className="logo-container">
     <img className="logo-container__image" src={url} alt="application logo" />
     <h1 className="logo-container__text">
       Speak<span>Hub</span>
