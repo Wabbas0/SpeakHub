@@ -1,0 +1,18 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container__image {
+  width: 42px;
+  margin: 5px;
+}
+
+.logo-container__text {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.logo-container__text span {
+  color: #fa4b34;
+}
