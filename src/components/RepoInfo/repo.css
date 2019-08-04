@@ -1,0 +1,12 @@
+.repo__text {
+  font-size: 1.4em;
+}
+
+.repo__tag {
+  padding: 2px 5px;
+  border-radius: 12px;
+}
+
+#repo .repo__badge {
+  background: #777;
+}

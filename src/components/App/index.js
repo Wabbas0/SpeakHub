@@ -3,6 +3,8 @@ import React from "react";
 import { Layout } from "antd";
 import NavBar from "../NavBar";
 import Search from "../Search";
+import RepoInfo from "../RepoInfo";
+
 import "./App.css";
 
 const { Header, Sider, Content } = Layout;
@@ -32,7 +34,14 @@ function App() {
             onChange={query => console.log(query)}
           />
         </Sider>
-        {/* <Content>Content</Content> */}
+        <Content style={{ background: "#fff" }}>
+          <RepoInfo
+            repoName="react"
+            repoOwner="facebook"
+            issuesCount={10}
+            pullsCount={20}
+          />
+        </Content>
       </Layout>
     </Layout>
   );
