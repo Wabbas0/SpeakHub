@@ -7,6 +7,8 @@
 
 [lints]
 all=warn
+sketchy-null-string=off
+
 
 [ignore]
 .*build/.*
