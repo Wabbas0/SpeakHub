@@ -9,22 +9,27 @@ const FilterParam = ({
   onChange,
   selectType,
   placeholder,
-  label
+  label,
+  allowClear,
+  style
 }: {
   options: Array<string>,
   value?: Array<string> | string | typeof undefined,
   selectType: "default" | "multiple",
   onChange: (value: Array<string> | string) => void,
   placeholder: string,
-  label: string
+  label: string,
+  allowClear?: boolean,
+  style?: Object
 }) => (
   <Select
     mode={selectType}
-    dropdownStyle={{ minWidth: 300 }}
+    dropdownStyle={{ minWidth: 200 }}
     placeholder={placeholder}
     value={value}
     onChange={onChange}
-    allowClear
+    allowClear={allowClear || true}
+    style={style}
   >
     <Option disabled value="disabled" label="disabled">
       {label}

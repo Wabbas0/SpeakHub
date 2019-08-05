@@ -22,7 +22,7 @@ const RepoInfo = ({
     active
     title={false}
     loading={loading}
-    paragraph={{ rows: 2, width: [120, 100] }}
+    paragraph={{ rows: 2, width: [200, 150] }}
   >
     <div className="repo">
       <Breadcrumb>

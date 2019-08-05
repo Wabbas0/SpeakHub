@@ -1,6 +1,7 @@
 //flow
 import React from "react";
-import { Layout } from "antd";
+import { Layout, Row, Col } from "antd";
+import Sort from "../Sort";
 import NavBar from "../NavBar";
 import Search from "../Search";
 import RepoInfo from "../RepoInfo";
@@ -35,12 +36,19 @@ function App() {
           />
         </Sider>
         <Content style={{ background: "#fff" }}>
-          <RepoInfo
-            repoName="react"
-            repoOwner="facebook"
-            issuesCount={10}
-            pullsCount={20}
-          />
+          <Row type="flex" justify="space-between" align="middle">
+            <Col>
+              <RepoInfo
+                repoName="react"
+                repoOwner="facebook"
+                issuesCount={10}
+                pullsCount={20}
+              />
+            </Col>
+            <Col>
+              <Sort handleChange={sort => console.log(sort)} />
+            </Col>
+          </Row>
         </Content>
       </Layout>
     </Layout>
