@@ -9,7 +9,7 @@ import "./navbar.css";
 type Props = {
   logo: string,
   menuItems: Array<{ itemName: string, path: string }>,
-  user: { userName: string, picture: string }
+  user: { userName: string, picture?: string }
 };
 
 type State = {
@@ -36,7 +36,7 @@ class NavBar extends React.Component<Props, State> {
       <nav id="nav" className="nav">
         <Row type="flex" justify="space-between" align="middle">
           <Col md={12}>
-            <Logo url="https://www.speakap.com/hubfs/favicon.png" />
+            <Logo url={logo} />
           </Col>
 
           <Col md={0}>

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo component it matches the snapshot when passing speakap logo 1`] = `
+<div
+  className="logo-container"
+  id="logo-container"
+>
+  <img
+    alt="application logo"
+    className="logo-container__image"
+    src="https://www.speakap.com/hubfs/favicon.png"
+  />
+  <h1
+    className="logo-container__text"
+  >
+    Speak
+    <span>
+      Hub
+    </span>
+  </h1>
+</div>
+`;

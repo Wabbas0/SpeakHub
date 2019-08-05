@@ -1,6 +1,6 @@
 //flow
 import React from "react";
-import { Layout, Affix, Row, Col, Icon } from "antd";
+import { Layout, Affix, Row, Col } from "antd";
 import Sort from "../Sort";
 import NavBar from "../NavBar";
 import QueryBuilder from "../QueryBuilder";
@@ -16,7 +16,11 @@ function SearchPage() {
     <Layout>
       <Affix style={{ zIndex: "100" }}>
         <Header>
-          <NavBar />
+          <NavBar
+            logo="https://www.speakap.com/hubfs/favicon.png"
+            user={{ userName: "WG75" }}
+            menuItems={[{ itemName: "Pull requests" }, { itemName: "Issues" }]}
+          />
         </Header>
       </Affix>
 
@@ -47,7 +51,12 @@ function SearchPage() {
         <Content
           style={{ padding: "20px 35px", maxWidth: "1124px", margin: "0 auto" }}
         >
-          <Row type="flex" justify="space-between" align="middle" style={{marginBottom: " 20px"}}>
+          <Row
+            type="flex"
+            justify="space-between"
+            align="middle"
+            style={{ marginBottom: " 20px" }}
+          >
             <Col>
               <RepoInfo
                 repoName="react"
