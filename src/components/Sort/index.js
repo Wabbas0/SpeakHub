@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import FilterParam from "../Search/FilterParam";
+import FilterParam from "../QueryBuilder/FilterParam";
 import { Skeleton } from "antd";
 
 type Props = {

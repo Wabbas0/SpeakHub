@@ -84,9 +84,9 @@ const Results = ({
               <p
                 style={{
                   width: "33vw",
-                  "white-space": "nowrap",
+                  whiteSpace: "nowrap",
                   overflow: "hidden",
-                  "text-overflow": "ellipsis",
+                  textOverflow: "ellipsis",
                   color: "#888"
                 }}
               >
@@ -94,7 +94,7 @@ const Results = ({
               </p>
             }
           />
-          <Descriptions column={3}>
+          <Descriptions column={{ xs: 1, sm: 1, md: 3 }}>
             <Descriptions.Item label={<b>Labels</b>}>
               {item.labels.length > 0
                 ? item.labels.map(label => (

@@ -8,7 +8,6 @@ import RepoInfo from "../RepoInfo";
 import Results from "../Results";
 
 import dummy from "./dummy.js";
-import "./search_page.css";
 
 const { Header, Sider, Content } = Layout;
 

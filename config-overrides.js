@@ -15,7 +15,11 @@ module.exports = override(
       "@text-color": "#888",
       "@normal-color": "rgba(45,146,159,0.8)",
       "@form-item-margin-bottom": "14px",
-      "@label-color": "#888"
+      "@label-color": "#888",
+      "@layout-header-padding": "0 30px",
+      "@layout-body-background": "#fff",
+      "@layout-header-background": "#fff",
+
     }
   })
 );
