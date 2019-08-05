@@ -5,7 +5,7 @@ import { Form, Radio, Button, Badge, Row, Col } from "antd";
 import FilterParam from "./FilterParam";
 import AllFilters from "./AllFilters";
 
-import "./search.css";
+import "./query_builder.css";
 
 export type Query = {
   status?: string,
@@ -27,7 +27,7 @@ type State = {
   filtersMenuIsOpen: boolean
 };
 
-class Search extends React.Component<Props, State> {
+class QueryBuilder extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -246,4 +246,4 @@ class Search extends React.Component<Props, State> {
   }
 }
 
-export default Search;
+export default QueryBuilder;
