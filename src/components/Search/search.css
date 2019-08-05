@@ -22,6 +22,14 @@
   right: 0;
 }
 
-.search__title {
+#search .search__title {
   margin-top: 10px;
+  font-size: 1.2em;
+  color: #888;
+  text-align: center;
+}
+
+#search form label {
+  font-weight: bold;
+  font-size: 12px;
 }

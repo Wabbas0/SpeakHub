@@ -1,6 +1,15 @@
 // @flow
 import React from "react";
-import { List, Avatar, Icon, Skeleton, Tag, Tooltip, Descriptions } from "antd";
+import {
+  List,
+  Avatar,
+  Icon,
+  Skeleton,
+  Tag,
+  Tooltip,
+  Descriptions,
+  Typography
+} from "antd";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 
@@ -44,7 +53,7 @@ const Results = ({
     renderItem={item => (
       <List.Item key={item.id}>
         <Skeleton
-          loading
+          loading={loading}
           active
           title={false}
           avatar
@@ -64,10 +73,10 @@ const Results = ({
                   {item.state}
                 </Tag>
                 <div>
-                  <span>
+                  <Typography.Text style={{ fontSize: "12px" }}>
                     #{item.id} opened by {item.user.login}{" "}
                     {timeAgo.format(new Date(item.created_at))}
-                  </span>
+                  </Typography.Text>
                 </div>
               </span>
             }
@@ -77,7 +86,8 @@ const Results = ({
                   width: "33vw",
                   "white-space": "nowrap",
                   overflow: "hidden",
-                  "text-overflow": "ellipsis"
+                  "text-overflow": "ellipsis",
+                  color: "#888"
                 }}
               >
                 {item.body}

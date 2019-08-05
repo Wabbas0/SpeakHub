@@ -33,7 +33,7 @@ class AllFilters extends React.Component<Props, State> {
     const { searchIn, onApply } = this.props;
     return (
       <Form>
-        <Typography.Title level={4}>All Filters</Typography.Title>
+        <Typography.Title className="search__title" level={4}>All Filters</Typography.Title>
         <Form.Item label="Labels">
           <FilterParam
             selectType="multiple"

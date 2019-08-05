@@ -13,7 +13,9 @@ module.exports = override(
       "@link-color": "#fa4b34",
       "@heading-color": "#333",
       "@text-color": "#888",
-      "@normal-color": "rgba(45,146,159,0.8)"
+      "@normal-color": "rgba(45,146,159,0.8)",
+      "@form-item-margin-bottom": "14px",
+      "@label-color": "#888"
     }
   })
 );
