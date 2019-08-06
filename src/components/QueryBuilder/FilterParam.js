@@ -31,9 +31,11 @@ const FilterParam = ({
     allowClear={allowClear || true}
     style={style}
   >
-    <Option disabled value="disabled" label="disabled">
-      {label}
-    </Option>
+    {options.length > 0 && (
+      <Option disabled value="disabled" label="disabled">
+        {label}
+      </Option>
+    )}
 
     {options.map((label, i) => (
       <Option key={label + i} value={label} label={label}>

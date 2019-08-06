@@ -33,8 +33,12 @@ class AllFilters extends React.Component<Props, State> {
     const { searchIn, onApply } = this.props;
     return (
       <Form>
-        <Typography.Title className="search__title" level={4}>All Filters</Typography.Title>
+        <Typography.Title className="search__title" level={4}>
+          All Filters
+        </Typography.Title>
         <Form.Item label="Labels">
+          {/*Labels component}*/}
+
           <FilterParam
             selectType="multiple"
             onChange={value => this.handleChange({ labels: value })}
@@ -48,9 +52,9 @@ class AllFilters extends React.Component<Props, State> {
         <Form.Item label="Author">
           <FilterParam
             selectType="default"
-            onChange={value => this.handleChange({ author: value })}
+            onChange={value => this.handleChange({ creator: value })}
             options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-            value={query.author}
+            value={query.creator}
             label="Author"
             placeholder="Choose Author"
           />
@@ -67,24 +71,25 @@ class AllFilters extends React.Component<Props, State> {
           />
         </Form.Item>
 
+        <Form.Item label="Milestone">
+          <FilterParam
+            selectType="default"
+            onChange={value => this.handleChange({ milestone: value })}
+            options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
+            value={query.milestone}
+            label="Milestone"
+            placeholder="Choose milestone"
+          />
+        </Form.Item>
+
         <Form.Item label="Projects">
           <FilterParam
             selectType="multiple"
             onChange={value => this.handleChange({ projects: value })}
-            options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
+            options={[]}
             value={query.projects}
             label="Projects"
             placeholder="Choose projects"
-          />
-        </Form.Item>
-        <Form.Item label="Milestones">
-          <FilterParam
-            selectType="multiple"
-            onChange={value => this.handleChange({ milestones: value })}
-            options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-            value={query.milestones}
-            label="Milestones"
-            placeholder="Choose milestones"
           />
         </Form.Item>
 
@@ -93,7 +98,7 @@ class AllFilters extends React.Component<Props, State> {
             <FilterParam
               selectType="multiple"
               onChange={value => this.handleChange({ reviews: value })}
-              options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
+              options={[]}
               value={query.reviews}
               label="Reviews"
               placeholder="Choose reviews"

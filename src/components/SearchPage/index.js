@@ -37,11 +37,11 @@ function SearchPage() {
               query={{
                 status: "closed",
                 labels: ["bug", "55555"],
-                author: "WG75",
+                creator: "WG75",
                 assignee: "Wg75",
-                projects: ["v1", "v2"],
-                reviews: ["v3", "v2"],
-                milestones: ["v4", "v2"]
+                projects: [],
+                reviews: [],
+                milestone: ["v4", "v2"]
               }}
               onChange={query => console.log(query)}
             />

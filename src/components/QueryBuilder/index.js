@@ -10,7 +10,7 @@ import "./query_builder.css";
 export type Query = {
   status?: string,
   labels?: Array<string>,
-  author?: string,
+  creator?: string,
   projects?: Array<string>,
   milestones?: Array<string>,
   assignee?: string,
@@ -74,11 +74,11 @@ class QueryBuilder extends React.Component<Props, State> {
   render() {
     const { searchIn, query } = this.props;
     const { filtersMenuIsOpen } = this.state;
-    const { status, labels, author, ...otherParams } = query;
+    const { status, labels, creator, ...otherParams } = query;
 
     let unCommonParamsLength: number = this.getQueryLength(otherParams);
     let queryLength: number =
-      unCommonParamsLength + this.getQueryLength({ status, labels, author });
+      unCommonParamsLength + this.getQueryLength({ status, labels, creator });
 
     return (
       <section id="search" className="search">
@@ -116,6 +116,8 @@ class QueryBuilder extends React.Component<Props, State> {
                 }
               >
                 <Form.Item>
+                  {/*Labels component}*/}
+
                   <FilterParam
                     selectType="multiple"
                     onChange={value => this.handleChange({ labels: value })}
@@ -128,15 +130,16 @@ class QueryBuilder extends React.Component<Props, State> {
               </Col>
 
               <Col
-                order={!query.author ? 1 : 0}
-                span={unCommonParamsLength === 0 || !query.author ? 24 : null}
+                order={!query.creator ? 1 : 0}
+                span={unCommonParamsLength === 0 || !query.creator ? 24 : null}
               >
                 <Form.Item>
+                  {/*Author component}*/}
                   <FilterParam
                     selectType="default"
-                    onChange={value => this.handleChange({ author: value })}
+                    onChange={value => this.handleChange({ creator: value })}
                     options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-                    value={query.author}
+                    value={query.creator}
                     label="Author"
                     placeholder="Choose Author"
                   />
@@ -146,6 +149,8 @@ class QueryBuilder extends React.Component<Props, State> {
               {query.assignee && (
                 <Col>
                   <Form.Item>
+                    {/*Assignee component}*/}
+
                     <FilterParam
                       selectType="default"
                       onChange={value => this.handleChange({ assignee: value })}
@@ -164,8 +169,7 @@ class QueryBuilder extends React.Component<Props, State> {
                     <FilterParam
                       selectType="multiple"
                       onChange={value => this.handleChange({ projects: value })}
-                      options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-                      value={["v1", "v3"]}
+                      options={[]}
                       label="Projects"
                       placeholder="Choose projects"
                     />
@@ -173,18 +177,20 @@ class QueryBuilder extends React.Component<Props, State> {
                 </Col>
               )}
 
-              {query.milestones && query.milestones.length > 0 && (
+              {query.milestone && query.milestone.length > 0 && (
                 <Col>
                   <Form.Item>
+                                      {/*Milestone component}*/}
+
                     <FilterParam
-                      selectType="multiple"
+                      selectType="default"
                       onChange={value =>
-                        this.handleChange({ milestones: value })
+                        this.handleChange({ milestone: value })
                       }
                       options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
                       value={["v1", "report"]}
-                      label="Milestones"
-                      placeholder="Choose milestones"
+                      label="Milestone"
+                      placeholder="Choose milestone"
                     />
                   </Form.Item>
                 </Col>
@@ -196,8 +202,7 @@ class QueryBuilder extends React.Component<Props, State> {
                     <FilterParam
                       selectType="multiple"
                       onChange={value => this.handleChange({ reviews: value })}
-                      options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-                      value={["v1", "report"]}
+                      options={[]}
                       label="Reviews"
                       placeholder="Choose reviews"
                     />
