@@ -1,17 +1,25 @@
 //flow
 import React from "react";
 import { Layout, Affix, Row, Col } from "antd";
+import { Link } from "react-router-dom";
 import Sort from "../Sort";
 import NavBar from "../NavBar";
 import QueryBuilder from "../QueryBuilder";
 import RepoInfo from "../RepoInfo";
 import Results from "../Results";
 
-import dummy from "./dummy.js";
-
 const { Header, Sider, Content } = Layout;
 
-function SearchPage() {
+function SearchPage({
+  data,
+  loading,
+  onQueryChange,
+  repoName,
+  repoOwner,
+  pagination,
+  resource,
+  query
+}) {
   return (
     <Layout>
       <Affix style={{ zIndex: "100" }}>
@@ -33,18 +41,7 @@ function SearchPage() {
             theme="light"
             style={{ height: "calc(100vh - 64px" }}
           >
-            <QueryBuilder
-              query={{
-                status: "closed",
-                labels: ["bug", "55555"],
-                creator: "WG75",
-                assignee: "Wg75",
-                projects: [],
-                reviews: [],
-                milestone: ["v4", "v2"]
-              }}
-              onChange={query => console.log(query)}
-            />
+            <QueryBuilder query={query} onChange={onQueryChange} />
           </Sider>
         </Affix>
 
@@ -59,18 +56,25 @@ function SearchPage() {
           >
             <Col>
               <RepoInfo
-                repoName="react"
-                repoOwner="facebook"
+                loading={loading}
+                repoName={repoName}
+                repoOwner={repoOwner}
                 issuesCount={10}
                 pullsCount={20}
               />
             </Col>
             <Col>
-              <Sort handleChange={sort => console.log(sort)} />
+              <Sort loading={loading} handleChange={onQueryChange} />
             </Col>
           </Row>
 
-          <Results data={dummy} currentPage={1} total={30} />
+          <Results
+            data={data}
+            loading={loading}
+            currentPage={1}
+            total={30}
+            resource={resource}
+          />
         </Content>
       </Layout>
     </Layout>

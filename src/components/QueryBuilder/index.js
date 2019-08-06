@@ -8,7 +8,7 @@ import AllFilters from "./AllFilters";
 import "./query_builder.css";
 
 export type Query = {
-  status?: string,
+  state?: string,
   labels?: Array<string>,
   creator?: string,
   projects?: Array<string>,
@@ -68,17 +68,17 @@ class QueryBuilder extends React.Component<Props, State> {
       newQuery[param] = undefined;
     });
 
-    onChange({ ...newQuery, status: "open" });
+    onChange({ ...newQuery, state: "open" });
   };
 
   render() {
     const { searchIn, query } = this.props;
     const { filtersMenuIsOpen } = this.state;
-    const { status, labels, creator, ...otherParams } = query;
+    const { state, labels, creator, sort, ...otherParams } = query;
 
     let unCommonParamsLength: number = this.getQueryLength(otherParams);
     let queryLength: number =
-      unCommonParamsLength + this.getQueryLength({ status, labels, creator });
+      unCommonParamsLength + this.getQueryLength({ state, labels, creator });
 
     return (
       <section id="search" className="search">
@@ -89,11 +89,11 @@ class QueryBuilder extends React.Component<Props, State> {
           <Form>
             <Form.Item>
               <Radio.Group
-                value={status}
+                value={query.state || "open"}
                 defaultValue={"open"}
                 buttonStyle="solid"
                 onChange={({ target }) =>
-                  this.handleChange({ status: target.value })
+                  this.handleChange({ state: target.value })
                 }
               >
                 <Radio.Button value="open">Open</Radio.Button>
@@ -180,7 +180,7 @@ class QueryBuilder extends React.Component<Props, State> {
               {query.milestone && query.milestone.length > 0 && (
                 <Col>
                   <Form.Item>
-                                      {/*Milestone component}*/}
+                    {/*Milestone component}*/}
 
                     <FilterParam
                       selectType="default"
@@ -242,6 +242,7 @@ class QueryBuilder extends React.Component<Props, State> {
               searchIn={searchIn}
               onApply={(query: Query) => {
                 this.toggleFiltersMenu();
+                this.handleChange(query);
               }}
             />
           )}

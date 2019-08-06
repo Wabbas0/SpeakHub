@@ -23,6 +23,7 @@ type Props = {
   total: number,
   pageSize: number,
   loading: Boolean,
+  resource: string,
   data: Array<Object>,
   onPageChange: ({ page: number }) => void
 };
@@ -32,6 +33,7 @@ const Results = ({
   total,
   pageSize,
   data,
+  resource,
   loading,
   onPageChange
 }: Props) => (
@@ -44,11 +46,19 @@ const Results = ({
       },
       pageSize: 10
     }}
+    loading={loading}
     dataSource={data}
     footer={
-      <div>
-        Page <b>{currentPage}</b> of <b>{total}</b>
-      </div>
+      <Skeleton
+        loading={loading}
+        active
+        title={false}
+        paragraph={{ rows: 1, width: 100 }}
+      >
+        <div>
+          Page <b>{currentPage}</b> of <b>{total}</b>
+        </div>
+      </Skeleton>
     }
     renderItem={item => (
       <List.Item key={item.id}>
@@ -105,11 +115,17 @@ const Results = ({
             <Descriptions.Item label={<b>Assignee</b>}>
               {item.assignee ? item.assignee.login : "N/a"}
             </Descriptions.Item>
-            <Descriptions.Item
-              label={<IconText type="message" text="Comments" />}
-            >
-              {item.comments}
-            </Descriptions.Item>
+            {resource === "pulls" ? (
+              <Descriptions.Item label={<b>Merged</b>}>
+                {item.merged_at ? "Yes" : "No"}
+              </Descriptions.Item>
+            ) : (
+              <Descriptions.Item
+                label={<IconText type="message" text="Comments" />}
+              >
+                {item.comments}
+              </Descriptions.Item>
+            )}
           </Descriptions>
         </Skeleton>
       </List.Item>
