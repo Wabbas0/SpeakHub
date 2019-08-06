@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import axios from "axios";
-
+import parseLink from "parse-link-header";
 /**
  * Create an Axios Client with defaults
  */
@@ -10,7 +10,8 @@ const client = axios.create({
 
 const defaultOptions = {
   headers: {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    Accept: "  application/vnd.github.inertia-preview+json"
   }
 };
 
@@ -26,7 +27,13 @@ const request = async options => {
         response.config.url
       );
     }
-    return response.data;
+    return {
+      data: response.data,
+      pagination:
+        response.headers && response.headers.link
+          ? parseLink(response.headers.link)
+          : null
+    };
   };
 
   const onError = error => {
@@ -54,10 +61,11 @@ const request = async options => {
 
     return Promise.reject(error.response || error.message);
   };
-
   return client({ ...defaultOptions, ...options })
     .then(onSuccess)
     .catch(onError);
 };
+
+window.req = request;
 
 export default request;
