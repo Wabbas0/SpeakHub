@@ -4,7 +4,7 @@ import React from "react";
 import { ConnectedRouter } from "connected-react-router";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { history } from "../../redux/index";
-import SearchPage from "../../components/SearchPage";
+import Search from "../Search/SearchContainer";
 
 const App = () => (
   <ConnectedRouter history={history}>
@@ -14,7 +14,7 @@ const App = () => (
         path="/"
         render={() => <Redirect to="search/ant-design/ant-design/issues" />}
       />
-      <Route path="/search/:collection/:owner/:repo" component={SearchPage} />
+      <Route path="/search/:repoOwner/:repoName/:resource" component={Search} />
     </Switch>
   </ConnectedRouter>
 );

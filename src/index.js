@@ -8,9 +8,6 @@ import * as serviceWorker from "./serviceWorker";
 // Create our redux store
 const store = createStore();
 
-//just for dev
-window.store = store
-
 render(
   <Provider store={store}>
     <App />
