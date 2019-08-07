@@ -31,8 +31,6 @@ class Author extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    repoName: state.search.repoName,
-    repoOwner: state.search.repoOwner,
     authorData: state.author.data,
     loading: state.author.loading
   };

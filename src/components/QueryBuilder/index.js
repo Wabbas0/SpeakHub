@@ -5,6 +5,8 @@ import { Form, Radio, Button, Badge, Row, Col } from "antd";
 import FilterParam from "./FilterParam";
 import AllFilters from "./AllFilters";
 import Author from "../../containers/Author/AuthorContainer";
+import Label from "../../containers/Label/LabelContainer";
+
 import "./query_builder.css";
 
 export type Query = {
@@ -52,7 +54,7 @@ class QueryBuilder extends React.Component<Props, State> {
     let queryLength = 0;
 
     Object.keys(query).forEach(prop => {
-      if (query[prop] !== undefined && query[prop].length > 0) {
+      if (query[prop] && (query[prop] && query[prop].length > 0)) {
         ++queryLength;
       }
     });
@@ -118,14 +120,13 @@ class QueryBuilder extends React.Component<Props, State> {
               >
                 <Form.Item>
                   {/*Labels component}*/}
-
-                  <FilterParam
-                    selectType="multiple"
-                    onChange={value => this.handleChange({ labels: value })}
-                    options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-                    value={query.labels}
-                    label="Labels"
-                    placeholder="Choose labels"
+                  <Label
+                    query={query}
+                    onChange={value =>
+                      this.handleChange({
+                        labels: value.length > 0 ? value.join() : []
+                      })
+                    }
                   />
                 </Form.Item>
               </Col>

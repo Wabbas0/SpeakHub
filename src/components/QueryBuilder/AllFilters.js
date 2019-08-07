@@ -4,6 +4,7 @@ import { Typography } from "antd";
 import { Form, Button } from "antd";
 import type { Query } from "./";
 import FilterParam from "./FilterParam";
+import Label from "../../containers/Label/LabelContainer";
 import Author from "../../containers/Author/AuthorContainer";
 
 type Props = {
@@ -40,13 +41,13 @@ class AllFilters extends React.Component<Props, State> {
         <Form.Item label="Labels">
           {/*Labels component}*/}
 
-          <FilterParam
-            selectType="multiple"
-            onChange={value => this.handleChange({ labels: value })}
-            options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-            value={query.labels}
-            label="Labels"
-            placeholder="Choose labels"
+          <Label
+            query={query}
+            onChange={value =>
+              this.handleChange({
+                labels: value.length > 0 ? value.join() : []
+              })
+            }
           />
         </Form.Item>
 

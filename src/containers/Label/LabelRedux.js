@@ -1,7 +1,7 @@
 /* ------------- Actions ------------- */
-export const LOAD_AUTHOR_REQUEST = "SpeakHub/Author/LOAD_AUTHOR_REQUEST";
-export const LOAD_AUTHOR_SUCCESS = "SpeakHub/Author/LOAD_AUTHOR_SUCCESS";
-export const LOAD_AUTHOR_ERROR = "SpeakHub/Author/LOAD_AUTHOR_ERROR";
+export const LOAD_LABEL_REQUEST = "SpeakHub/LABEL/LOAD_LABEL_REQUEST";
+export const LOAD_LABEL_SUCCESS = "SpeakHub/LABEL/LOAD_LABEL_SUCCESS";
+export const LOAD_LABEL_ERROR = "SpeakHub/LABEL/LOAD_LABEL_ERROR";
 
 /* ------------- initial state ------------- */
 export const initialState = {
@@ -13,17 +13,17 @@ export const initialState = {
 /* ------------- Reducer ------------- */
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case LOAD_AUTHOR_REQUEST:
+    case LOAD_LABEL_REQUEST:
       return { ...state, loading: true };
 
-    case LOAD_AUTHOR_ERROR:
+    case LOAD_LABEL_ERROR:
       return { ...state, error: true, loading: false };
 
-    case LOAD_AUTHOR_SUCCESS:
+    case LOAD_LABEL_SUCCESS:
       const { data } = action.payload;
       return {
         ...state,
-        data: data.length > 0 ? data.map(author => author.login) : data,
+        data: data.length > 0 ? data.map(label => label.name) : data,
         loading: false,
         error: false
       };
@@ -34,34 +34,34 @@ export default function reducer(state = initialState, action = {}) {
 }
 
 /* ------------- Action Creators ------------- */
-export function loadAuthorRequest() {
-  return { type: LOAD_AUTHOR_REQUEST };
+export function loadLabelRequest() {
+  return { type: LOAD_LABEL_REQUEST };
 }
 
-export function loadAuthorSuccess(result) {
-  return { type: LOAD_AUTHOR_SUCCESS, payload: result };
+export function loadLabelSuccess(result) {
+  return { type: LOAD_LABEL_SUCCESS, payload: result };
 }
 
-export function loadAuthorError(error) {
-  return { type: LOAD_AUTHOR_ERROR, payload: { error } };
+export function loadLabelError(error) {
+  return { type: LOAD_LABEL_ERROR, payload: { error } };
 }
 
 /* ------------- Thunks ------------- */
-export function loadAuthor(repoName, repoOwner) {
+export function loadLabel(repoName, repoOwner) {
   return async (dispatch, getState, api) => {
     try {
-      dispatch(loadAuthorRequest());
+      dispatch(loadLabelRequest());
       const result = await api.RepoModel.getRepoData(
         repoName,
         repoOwner,
-        "contributors",
+        "labels",
         {},
         100
       );
 
-      dispatch(loadAuthorSuccess(result));
+      dispatch(loadLabelSuccess(result));
     } catch (err) {
-      dispatch(loadAuthorError(err));
+      dispatch(loadLabelError(err));
     }
   };
 }
