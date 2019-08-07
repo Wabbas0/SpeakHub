@@ -4,6 +4,7 @@ import { Typography } from "antd";
 import { Form, Button } from "antd";
 import type { Query } from "./";
 import FilterParam from "./FilterParam";
+import Author from "../../containers/Author/AuthorContainer";
 
 type Props = {
   query: Query,
@@ -50,13 +51,9 @@ class AllFilters extends React.Component<Props, State> {
         </Form.Item>
 
         <Form.Item label="Author">
-          <FilterParam
-            selectType="default"
+          <Author
+            query={query}
             onChange={value => this.handleChange({ creator: value })}
-            options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-            value={query.creator}
-            label="Author"
-            placeholder="Choose Author"
           />
         </Form.Item>
 

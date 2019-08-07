@@ -11,7 +11,8 @@ const FilterParam = ({
   placeholder,
   label,
   allowClear,
-  style
+  style,
+  loading
 }: {
   options: Array<string>,
   value?: Array<string> | string | typeof undefined,
@@ -20,7 +21,8 @@ const FilterParam = ({
   placeholder: string,
   label: string,
   allowClear?: boolean,
-  style?: Object
+  style?: Object,
+  loading?: boolean
 }) => (
   <Select
     mode={selectType}
@@ -30,6 +32,7 @@ const FilterParam = ({
     onChange={onChange}
     allowClear={allowClear || true}
     style={style}
+    loading={loading}
   >
     {options.length > 0 && (
       <Option disabled value="disabled" label="disabled">

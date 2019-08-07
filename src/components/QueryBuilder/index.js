@@ -4,7 +4,7 @@ import { Typography } from "antd";
 import { Form, Radio, Button, Badge, Row, Col } from "antd";
 import FilterParam from "./FilterParam";
 import AllFilters from "./AllFilters";
-
+import Author from "../../containers/Author/AuthorContainer";
 import "./query_builder.css";
 
 export type Query = {
@@ -135,14 +135,9 @@ class QueryBuilder extends React.Component<Props, State> {
                 span={unCommonParamsLength === 0 || !query.creator ? 24 : null}
               >
                 <Form.Item>
-                  {/*Author component}*/}
-                  <FilterParam
-                    selectType="default"
+                  <Author
+                    query={query}
                     onChange={value => this.handleChange({ creator: value })}
-                    options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-                    value={query.creator}
-                    label="Author"
-                    placeholder="Choose Author"
                   />
                 </Form.Item>
               </Col>
