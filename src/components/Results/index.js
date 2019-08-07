@@ -31,7 +31,7 @@ type Props = {
 const Results = ({
   currentPage,
   total,
-  pageSize,
+  pageSize = 10,
   data,
   resource,
   loading,
@@ -42,9 +42,11 @@ const Results = ({
     size="large"
     pagination={{
       onChange: page => {
-        console.log(page);
+        onPageChange({ page });
       },
-      pageSize: 10
+      current: currentPage,
+      total: total * 10,
+      pageSize: pageSize
     }}
     loading={loading}
     dataSource={data}
@@ -107,8 +109,10 @@ const Results = ({
           <Descriptions column={{ xs: 1, sm: 1, md: 3 }}>
             <Descriptions.Item label={<b>Labels</b>}>
               {item.labels.length > 0
-                ? item.labels.map(label => (
-                    <Tag color={`#${label.color}`}>{label.name}</Tag>
+                ? item.labels.map((label, i) => (
+                    <Tag key={label + i} color={`#${label.color}`}>
+                      {label.name}
+                    </Tag>
                   ))
                 : "N/a"}
             </Descriptions.Item>

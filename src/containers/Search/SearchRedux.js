@@ -27,14 +27,25 @@ export default function reducer(state = initialState, action = {}) {
       return { ...state, error: true, loading: false };
 
     case LOAD_RESULTS_SUCCESS:
+      const { data, pagination, query, params } = action.payload;
       return {
         ...state,
-        data: action.payload.data,
+        data,
         loading: false,
         error: false,
-        pagination: action.payload.pagination,
-        query: action.payload.query,
-        ...action.payload.params
+        pagination: pagination
+          ? {
+              total: pagination.last
+                ? parseInt(pagination.last.page)
+                : parseInt(pagination.prev.page) + 1,
+
+              current: pagination.next
+                ? parseInt(pagination.next.page) - 1
+                : parseInt(pagination.prev.page) + 1
+            }
+          : null,
+        query,
+        ...params
       };
 
     default:
@@ -65,6 +76,7 @@ export function queryChange(change) {
       push(
         `${url}?${qs.stringify({
           ...query,
+          page: 1,
           ...change
         })}`
       )
@@ -82,11 +94,13 @@ export function loadResults(query, params) {
         repoName,
         repoOwner,
         resource,
-        query
+        query,
+        10
       );
 
       dispatch(loadResultsSuccess({ ...result, params, query }));
     } catch (err) {
+      console.log(err);
       dispatch(loadResultsError(err));
     }
   };

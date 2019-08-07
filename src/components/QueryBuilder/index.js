@@ -74,7 +74,7 @@ class QueryBuilder extends React.Component<Props, State> {
   render() {
     const { searchIn, query } = this.props;
     const { filtersMenuIsOpen } = this.state;
-    const { state, labels, creator, sort, ...otherParams } = query;
+    const { state, labels, creator, sort, page, ...otherParams } = query;
 
     let unCommonParamsLength: number = this.getQueryLength(otherParams);
     let queryLength: number =
@@ -110,6 +110,7 @@ class QueryBuilder extends React.Component<Props, State> {
                 }
                 span={
                   unCommonParamsLength === 0 ||
+                  !query.labels ||
                   (query.labels && query.labels.length === 0)
                     ? 24
                     : null
@@ -177,7 +178,7 @@ class QueryBuilder extends React.Component<Props, State> {
                 </Col>
               )}
 
-              {query.milestone && query.milestone.length > 0 && (
+              {query.milestone && (
                 <Col>
                   <Form.Item>
                     {/*Milestone component}*/}

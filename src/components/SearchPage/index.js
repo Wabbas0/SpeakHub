@@ -71,9 +71,10 @@ function SearchPage({
           <Results
             data={data}
             loading={loading}
-            currentPage={1}
-            total={30}
+            currentPage={pagination && pagination.current}
+            total={pagination && pagination.total}
             resource={resource}
+            onPageChange={onQueryChange}
           />
         </Content>
       </Layout>
