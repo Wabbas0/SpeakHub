@@ -179,15 +179,16 @@ class QueryBuilder extends React.Component<Props, State> {
               {query.milestone && (
                 <Col>
                   <Form.Item>
-                    {/*Milestone component}*/}
-
                     <FilterParam
                       selectType="default"
                       onChange={value =>
                         this.handleChange({ milestone: value })
                       }
-                      options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-                      value={["v1", "report"]}
+                      options={[
+                        { label: "Linked to a milestone", value: "*" },
+                        { label: "Not linked to a milestone", value: "none" }
+                      ]}
+                      value={query.milestone}
                       label="Milestone"
                       placeholder="Choose milestone"
                     />

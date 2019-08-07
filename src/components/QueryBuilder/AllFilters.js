@@ -70,7 +70,10 @@ class AllFilters extends React.Component<Props, State> {
           <FilterParam
             selectType="default"
             onChange={value => this.handleChange({ milestone: value })}
-            options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
+            options={[
+              { label: "Linked to a milestone", value: "*" },
+              { label: "Not linked to a milestone", value: "none" }
+            ]}
             value={query.milestone}
             label="Milestone"
             placeholder="Choose milestone"
