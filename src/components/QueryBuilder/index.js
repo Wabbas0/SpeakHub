@@ -77,7 +77,15 @@ class QueryBuilder extends React.Component<Props, State> {
   render() {
     const { searchIn, query } = this.props;
     const { filtersMenuIsOpen } = this.state;
-    const { state, labels, creator, sort, page, ...otherParams } = query;
+    const {
+      state,
+      labels,
+      creator,
+      sort,
+      direction,
+      page,
+      ...otherParams
+    } = query;
 
     let unCommonParamsLength: number = this.getQueryLength(otherParams);
     let queryLength: number =

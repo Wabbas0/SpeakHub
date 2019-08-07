@@ -23,7 +23,12 @@ export default function reducer(state = initialState, action = {}) {
       const { data } = action.payload;
       return {
         ...state,
-        data: data.length > 0 ? data.map(author => author.login) : data,
+        data:
+          data.length > 0
+            ? data.map(author => {
+                return { label: author.login, value: author.login };
+              })
+            : data,
         loading: false,
         error: false
       };

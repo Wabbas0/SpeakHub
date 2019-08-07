@@ -18,14 +18,17 @@ const Sort = ({ value, handleChange, loading }: Props) => (
   >
     <FilterParam
       options={[
-        "newest",
-        "oldest",
-        "most commented",
-        "least commented",
-        "recently updated"
+        { label: "Newest", value: "created,desc" },
+        { label: "Oldest", value: "created,asc" },
+        { label: "Most commented", value: "comments,desc" },
+        { label: "Least commented", value: "comments,asc" },
+        { label: "Recently updated", value: "updated,asc" }
       ]}
       value={value}
-      onChange={value => handleChange({ sort: value })}
+      onChange={value => {
+        const [sort, direction] = value.split(",");
+        handleChange({ sort, direction });
+      }}
       selectType="default"
       placeholder="Sort by"
       allowClear={false}

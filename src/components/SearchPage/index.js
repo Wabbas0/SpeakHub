@@ -64,7 +64,15 @@ function SearchPage({
               />
             </Col>
             <Col>
-              <Sort loading={loading} handleChange={onQueryChange} />
+              <Sort
+                loading={loading}
+                handleChange={onQueryChange}
+                value={
+                  query.sort &&
+                  query.direction &&
+                  [query.sort, query.direction].join()
+                }
+              />
             </Col>
           </Row>
 

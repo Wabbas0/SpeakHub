@@ -40,9 +40,9 @@ const FilterParam = ({
       </Option>
     )}
 
-    {options.map((label, i) => (
-      <Option key={label + i} value={label} label={label}>
-        {label}
+    {options.map((option, i) => (
+      <Option key={label + i} value={option.value} label={option.label}>
+        {option.label}
       </Option>
     ))}
   </Select>
