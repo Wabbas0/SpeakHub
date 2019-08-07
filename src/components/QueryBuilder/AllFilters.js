@@ -6,6 +6,7 @@ import type { Query } from "./";
 import FilterParam from "./FilterParam";
 import Label from "../../containers/Label/LabelContainer";
 import Author from "../../containers/Author/AuthorContainer";
+import Assignee from "../../containers/Assignee/AssigneeContainer";
 
 type Props = {
   query: Query,
@@ -59,13 +60,9 @@ class AllFilters extends React.Component<Props, State> {
         </Form.Item>
 
         <Form.Item label="Assignee">
-          <FilterParam
-            selectType="default"
+          <Assignee
+            query={query}
             onChange={value => this.handleChange({ assignee: value })}
-            options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-            value={query.assignee}
-            label="Assignee"
-            placeholder="Choose Assignee"
           />
         </Form.Item>
 

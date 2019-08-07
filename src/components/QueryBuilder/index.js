@@ -6,6 +6,7 @@ import FilterParam from "./FilterParam";
 import AllFilters from "./AllFilters";
 import Author from "../../containers/Author/AuthorContainer";
 import Label from "../../containers/Label/LabelContainer";
+import Assignee from "../../containers/Assignee/AssigneeContainer";
 
 import "./query_builder.css";
 
@@ -119,7 +120,6 @@ class QueryBuilder extends React.Component<Props, State> {
                 }
               >
                 <Form.Item>
-                  {/*Labels component}*/}
                   <Label
                     query={query}
                     onChange={value =>
@@ -146,15 +146,9 @@ class QueryBuilder extends React.Component<Props, State> {
               {query.assignee && (
                 <Col>
                   <Form.Item>
-                    {/*Assignee component}*/}
-
-                    <FilterParam
-                      selectType="default"
+                    <Assignee
+                      query={query}
                       onChange={value => this.handleChange({ assignee: value })}
-                      options={["bug", "report", "v1", "v2", "v3", "v4", "v5"]}
-                      value={["Wg75"]}
-                      label="Assignee"
-                      placeholder="Choose Assignee"
                     />
                   </Form.Item>
                 </Col>
