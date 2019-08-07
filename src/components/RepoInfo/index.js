@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 import { Breadcrumb, Skeleton, Badge, Typography, Tag } from "antd";
 
 import "./repo.css";
@@ -9,14 +10,16 @@ type Props = {
   pullsCount: number,
   repoName: string,
   repoOwner: string,
-  loading: boolean
+  loading: boolean,
+  match: Object
 };
 const RepoInfo = ({
   issuesCount,
   pullsCount,
   repoName,
   repoOwner,
-  loading
+  loading,
+  match
 }: Props) => (
   <Skeleton
     active
@@ -40,29 +43,41 @@ const RepoInfo = ({
 
       <div>
         <Tag className={"repo__tag"}>
-          <Typography.Text>
-            Issues{" "}
-            <Badge
-              className="repo__badge"
-              count={issuesCount}
-              style={{ background: "#777" }}
-            />
-          </Typography.Text>
+          <Link
+            to={`/search/${match.params.repoOwner}/${
+              match.params.repoName
+            }/issues`}
+          >
+            <Typography.Text>
+              Issues{" "}
+              <Badge
+                className="repo__badge"
+                count={issuesCount}
+                style={{ background: "#777" }}
+              />
+            </Typography.Text>
+          </Link>
         </Tag>
 
         <Tag className={"repo__tag"}>
-          <Typography.Text>
-            Pulls{" "}
-            <Badge
-              className="repo__badge"
-              count={pullsCount}
-              style={{ background: "#777" }}
-            />
-          </Typography.Text>
+          <Link
+            to={`/search/${match.params.repoOwner}/${
+              match.params.repoName
+            }/pulls`}
+          >
+            <Typography.Text>
+              Pulls{" "}
+              <Badge
+                className="repo__badge"
+                count={pullsCount}
+                style={{ background: "#777" }}
+              />
+            </Typography.Text>
+          </Link>
         </Tag>
       </div>
     </div>
   </Skeleton>
 );
 
-export default RepoInfo;
+export default withRouter(RepoInfo);

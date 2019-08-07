@@ -11,7 +11,8 @@ const client = axios.create({
 const defaultOptions = {
   headers: {
     "Content-Type": "application/json",
-    Accept: "  application/vnd.github.inertia-preview+json"
+    Accept: "  application/vnd.github.inertia-preview+json",
+    Authorization: "Bearer ccadc43646fe817f7e089d0f0d4b54e83f94f0e3"
   }
 };
 
@@ -65,7 +66,5 @@ const request = async options => {
     .then(onSuccess)
     .catch(onError);
 };
-
-window.req = request;
 
 export default request;

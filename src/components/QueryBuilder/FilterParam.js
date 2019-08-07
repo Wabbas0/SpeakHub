@@ -12,7 +12,9 @@ const FilterParam = ({
   label,
   allowClear,
   style,
-  loading
+  loading,
+  withPopupContainer,
+  popup
 }: {
   options: Array<string>,
   value?: Array<string> | string | typeof undefined,
@@ -22,9 +24,11 @@ const FilterParam = ({
   label: string,
   allowClear?: boolean,
   style?: Object,
-  loading?: boolean
+  loading?: boolean,
+  withPopupContainer?: boolean
 }) => (
   <Select
+    showArrow
     mode={selectType}
     dropdownStyle={{ minWidth: 200 }}
     placeholder={placeholder}
@@ -33,9 +37,17 @@ const FilterParam = ({
     allowClear={allowClear || true}
     style={style}
     loading={loading}
+    getPopupContainer={
+      withPopupContainer ? () => document.getElementById("search") : null
+    }
   >
     {options.length > 0 && (
-      <Option disabled value="disabled" label="disabled">
+      <Option
+        disabled
+        value="disabled"
+        label="disabled"
+        style={{ fontWeight: "bold" }}
+      >
         {label}
       </Option>
     )}
@@ -47,5 +59,9 @@ const FilterParam = ({
     ))}
   </Select>
 );
+
+FilterParam.defaultProps = {
+  withPopupContainer: true
+};
 
 export default FilterParam;

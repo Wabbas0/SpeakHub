@@ -1,7 +1,6 @@
 //flow
 import React from "react";
 import { Layout, Affix, Row, Col } from "antd";
-import { Link } from "react-router-dom";
 import Sort from "../Sort";
 import NavBar from "../NavBar";
 import QueryBuilder from "../QueryBuilder";
@@ -59,8 +58,8 @@ function SearchPage({
                 loading={loading}
                 repoName={repoName}
                 repoOwner={repoOwner}
-                issuesCount={10}
-                pullsCount={20}
+                issuesCount={100}
+                pullsCount={100}
               />
             </Col>
             <Col>

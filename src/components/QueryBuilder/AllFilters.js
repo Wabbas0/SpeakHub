@@ -35,7 +35,7 @@ class AllFilters extends React.Component<Props, State> {
     const { query } = this.state;
     const { searchIn, onApply } = this.props;
     return (
-      <Form>
+      <Form id="#mobile" style={{ position: "relative" }}>
         <Typography.Title className="search__title" level={4}>
           All Filters
         </Typography.Title>
@@ -66,7 +66,7 @@ class AllFilters extends React.Component<Props, State> {
           />
         </Form.Item>
 
-        <Form.Item label="Milestone">
+        <Form.Item id="#milestone" label="Milestone">
           <FilterParam
             selectType="default"
             onChange={value => this.handleChange({ milestone: value })}
@@ -77,6 +77,7 @@ class AllFilters extends React.Component<Props, State> {
             value={query.milestone}
             label="Milestone"
             placeholder="Choose milestone"
+            popup="milestone"
           />
         </Form.Item>
 

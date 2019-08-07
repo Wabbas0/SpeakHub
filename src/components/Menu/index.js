@@ -1,5 +1,6 @@
 // @flow
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 import { Typography } from "antd";
 import { Avatar } from "antd";
 import { Menu as AntdMenu } from "antd";
@@ -7,11 +8,13 @@ import { Menu as AntdMenu } from "antd";
 const Menu = ({
   mode,
   className,
-  onClick
+  onClick,
+  match
 }: {
   mode: string,
   className?: string,
-  onClick?: () => void
+  onClick?: () => void,
+  match: Object
 }) => (
   <AntdMenu
     className={`nav__menu ${className || ""}`}
@@ -19,10 +22,18 @@ const Menu = ({
     selectable={false}
   >
     <AntdMenu.Item className="nav__menu-item" key="pulls" onClick={onClick}>
-      Pull requests
+      <Link
+        to={`/search/${match.params.repoOwner}/${match.params.repoName}/pulls`}
+      >
+        Pull requests
+      </Link>
     </AntdMenu.Item>
     <AntdMenu.Item className="nav__menu-item" key="issues" onClick={onClick}>
-      Issues
+      <Link
+        to={`/search/${match.params.repoOwner}/${match.params.repoName}/issues`}
+      >
+        Issues
+      </Link>
     </AntdMenu.Item>
     <AntdMenu.Item className="nav__menu-item" key="profile" onClick={onClick}>
       <Avatar className="nav__user-avatar" icon="user" />
@@ -31,4 +42,4 @@ const Menu = ({
   </AntdMenu>
 );
 
-export default Menu;
+export default withRouter(Menu);

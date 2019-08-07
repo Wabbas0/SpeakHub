@@ -33,6 +33,7 @@ const Sort = ({ value, handleChange, loading }: Props) => (
       placeholder="Sort by"
       allowClear={false}
       style={{ width: 200 }}
+      withPopupContainer={false}
     />
   </Skeleton>
 );

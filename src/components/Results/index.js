@@ -79,8 +79,7 @@ const Results = ({
             }
             title={
               <span>
-                <a>{item.title}</a>
-                {"  "}
+                <a href="#">{item.title}</a>
                 <Tag color={`${item.state === "open" ? "green" : "red"}`}>
                   {item.state}
                 </Tag>
