@@ -79,7 +79,7 @@ const Results = ({
             }
             title={
               <span>
-                <a href="#">{item.title}</a>
+                <a href="https://www.speakap.com">{item.title}</a>
                 <Tag color={`${item.state === "open" ? "green" : "red"}`}>
                   {item.state}
                 </Tag>

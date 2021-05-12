@@ -12,7 +12,7 @@ const defaultOptions = {
   headers: {
     "Content-Type": "application/json",
     Accept: "  application/vnd.github.inertia-preview+json",
-    Authorization: "Bearer ccadc43646fe817f7e089d0f0d4b54e83f94f0e3"
+    Authorization: "Bearer    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"
   }
 };
 
